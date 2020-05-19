@@ -11,7 +11,6 @@ export const userService =  {
 function loggedIn() {
     const token = this.getToken()
     // token exists && is not expired
-    console.log({token},55)
     return !!token && !this.isTokenExpired(token)
 }
 

@@ -51,7 +51,6 @@ export const createTaskFailed = res => ({
 
 
 export const getTasks = () => {
-    console.log({token: userService.getToken()},1)
     return async dispatch => {
         dispatch(getTasksRequest());
         axios.get("/tasks")

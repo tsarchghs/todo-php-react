@@ -36,7 +36,6 @@ export const postLogin = ({ email, password }) => {
                 dispatch(postLoginSuccess(payload))
                 let token = payload.data.token;
                 axios.defaults.headers['Authorization'] = "Bearer " + token;
-                console.log({token},33)
                 userService.setToken(token)
             })
             .catch(err => dispatch(postLoginFailed(err.response)))
@@ -49,7 +48,6 @@ export const getLogin = () => {
         axios.get("/login")
             .then(payload => {
                 dispatch(getLoginSuccess(payload))
-                console.log({payload})
             })
             .catch(err => dispatch(getLoginFailed(err.response)))
     }
