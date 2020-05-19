@@ -24,6 +24,11 @@ class TaskController extends Controller
         ]);
     }
     public function store(Request $request){
+        $rules = [
+            'title' => 'required',
+            'description'  => 'required'
+        ];
+        $request->validate($rules);
         $user = Auth::guard('api')->user();
         $data = $request->all();
         $data["user_id"] = $user->id;
@@ -35,6 +40,11 @@ class TaskController extends Controller
         ]);   
     }
     public function update(Request $request, $id){
+        $rules = [
+            'title' => 'required',
+            'description'  => 'required'
+        ];
+        $request->validate($rules);
         $user = Auth::guard('api')->user();
         $task = Task::findOrFail($id);
         if ($task->user_id !== $user->id) throw new ModelNotFoundException();
